@@ -37,8 +37,8 @@ def show_summary():
 
 @app.route('/book/<competition>/<club>')
 def book(competition, club):
-    found_club = [c for c in clubs if c['name'] == club][0]
-    found_competition = [c for c in competitions if c['name'] == competition][0]
+    found_club = [clb for clb in clubs if clb['name'] == club][0]
+    found_competition = [cpt for cpt in competitions if cpt['name'] == competition][0]
     if found_club and found_competition:
         return render_template('booking.html',
                                club=found_club,
@@ -54,8 +54,8 @@ def book(competition, club):
 
 @app.route('/purchasePlaces', methods=['POST'])
 def purchase_places():
-    competition = [c for c in competitions if c['name'] == request.form['competition']][0]
-    club = [c for c in clubs if c['name'] == request.form['club']][0]
+    competition = [cpt for cpt in competitions if cpt['name'] == request.form['competition']][0]
+    club = [clb for clb in clubs if clb['name'] == request.form['club']][0]
     places_required = int(request.form['places'])
     competition['numberOfPlaces'] = int(competition['numberOfPlaces']) - places_required
     flash('Great-booking complete!')
