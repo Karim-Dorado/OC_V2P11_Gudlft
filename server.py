@@ -32,7 +32,7 @@ def show_summary():
         club = [club for club in clubs if club['email'] == request.form['email']][0]
     except IndexError:
         return render_template('index.html',
-                               message="Invalid email adress",
+                               message="Invalid email adress !",
                                )
     return render_template('welcome.html',
                            club=club,
